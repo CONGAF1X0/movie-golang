@@ -1,0 +1,52 @@
+2021/11/09 20:42:15 {"callers":["E:/go/src/TicketSales/main.go: 20 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1636461735344213500}
+2021/11/15 21:24:43 {"callers":["E:/go/src/TicketSales/main.go: 20 main.init.0"],"level":"error","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":1636982683758390100}
+2021/11/15 21:25:22 {"callers":["E:/go/src/TicketSales/main.go: 20 main.init.0"],"level":"error","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":1636982722778287600}
+2021/12/11 15:06:16 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"app.BindAndValid errs: Username为必填字段,Password为必填字段","time":1639206376475314000}
+2021/12/11 15:22:35 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"app.BindAndValid errs: Identity为必填字段,Certificate为必填字段","time":1639207355123595300}
+2021/12/11 15:23:40 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"svc.CheckAuth err: sql: expected 2 arguments, got 3","time":1639207420652678600}
+2021/12/11 15:24:52 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"svc.CheckAuth err: auth info does not exist.","time":1639207492751641600}
+2021/12/11 15:26:35 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"svc.CheckAuth err: auth info does not exist.","time":1639207595245001700}
+2021/12/11 15:27:13 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"app.BindAndValid errs: IdentityType为必填字段","time":1639207633645709200}
+2021/12/11 15:27:26 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"svc.CheckAuth err: auth info does not exist.","time":1639207646985952800}
+2021/12/11 15:29:26 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"svc.CheckAuth err: sql: Scan error on column index 1, name \"uid\": Scan: invalid UUID length: 1","time":1639207766268198200}
+2021/12/11 16:44:10 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"svc.CreateAuth err: Error 1054: Unknown column 'created_at' in 'field list'","time":1639212250966178600}
+2021/12/13 17:12:04 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"svc.CreateAuth err: Error 1054: Unknown column 'deleted_at' in 'field list'","time":1639386724431920500}
+2021/12/13 17:16:49 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"svc.CheckAuth err: Error 1054: Unknown column 'user_auth.deleted_at' in 'where clause'","time":1639387009977719200}
+2021/12/13 17:22:41 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"svc.CheckAuth err: auth info does not exist.","time":1639387361176414400}
+2021/12/13 17:24:15 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"svc.CreateAuth err: Error 1054: Unknown column 'updated' in 'field list'","time":1639387455424067700}
+2021/12/13 17:30:21 {"callers":["E:/go/src/TicketSales/main.go: 21 main.init.0"],"level":"error","message":"svc.CreateAuth err: Error 1054: Unknown column 'delete_time' in 'field list'","time":1639387821459600300}
+2021/12/15 16:33:11 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"warn","message":"无法创建Redis连接：dial tcp: missing address","time":1639557191709344300}
+2021/12/15 16:33:11 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CreateMobileCaptcha err: dial tcp: missing address","time":1639557191710032300}
+2021/12/15 16:38:36 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"app.BindAndValid errs: ActionType为必填字段","time":1639557516837981700}
+2021/12/15 16:38:51 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"warn","message":"无法创建Redis连接：dial tcp: missing address","time":1639557531824048300}
+2021/12/15 16:38:51 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CreateMobileCaptcha err: dial tcp: missing address","time":1639557531824551800}
+2021/12/15 16:41:32 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"warn","message":"无法创建Redis连接：dial tcp: missing address","time":1639557692073593000}
+2021/12/15 16:41:32 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CreateMobileCaptcha err: dial tcp: missing address","time":1639557692074141900}
+2021/12/15 17:12:51 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CreateMobileCaptcha err: 触发分钟级流控Permits:1","time":1639559571387109700}
+2021/12/16 16:15:57 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"app.BindAndValid errs: Identity为必填字段,Captcha长度必须是6个字符","time":1639642557835834100}
+2021/12/16 16:16:48 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"app.BindAndValid errs: Captcha长度必须是6个字符","time":1639642608836024000}
+2021/12/16 16:16:51 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.LoginByMobileCaptcha err: 验证码错误或失效","time":1639642611886486500}
+2021/12/16 16:23:04 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.LoginByMobileCaptcha err: 验证码错误或失效","time":1639642984775767000}
+2021/12/16 19:32:59 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CreateMobileCaptcha err: 只能向已回复授权信息的手机号发送","time":1639654379388534500}
+2021/12/16 19:35:11 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CreateMobileCaptcha err: 只能向已回复授权信息的手机号发送","time":1639654511361259700}
+2021/12/16 19:35:27 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CreateMobileCaptcha err: 只能向已回复授权信息的手机号发送","time":1639654527819087900}
+2021/12/16 19:35:58 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CreateMobileCaptcha err: 只能向已回复授权信息的手机号发送","time":1639654558005582100}
+2021/12/16 19:36:07 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CreateMobileCaptcha err: 只能向已回复授权信息的手机号发送","time":1639654567989617900}
+2021/12/16 19:36:50 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CreateMobileCaptcha err: 只能向已回复授权信息的手机号发送","time":1639654610235565700}
+2021/12/16 19:37:08 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CreateMobileCaptcha err: 只能向已回复授权信息的手机号发送","time":1639654628623750800}
+2021/12/16 19:40:54 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CheckMobileCaptcha err: 验证码失效","time":1639654854008604700}
+2021/12/16 19:42:44 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CheckMobileCaptcha err: 验证码失效","time":1639654964275021700}
+2021/12/16 19:44:41 {"callers":["E:/go/src/TicketSales/main.go: 22 main.init.0"],"level":"error","message":"svc.CheckAuth err: auth info does not exist.","time":1639655081490115900}
+2021/12/25 18:50:59 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"svc.GetMovieList err: Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%?%) LIMIT 1 OFFSET 0' at line 1","time":1640429459931095000}
+2021/12/26 15:38:53 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"svc.GetMovie err: Error 1054: Unknown column 'actor.' in 'where clause'","time":1640504333506307200}
+2021/12/26 15:39:29 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"svc.GetMovie err: Error 1054: Unknown column 'actor.' in 'where clause'","time":1640504369083608500}
+2021/12/26 15:39:57 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"svc.GetMovie err: Error 1054: Unknown column 'actor.' in 'where clause'","time":1640504397899819600}
+2021/12/26 15:42:03 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"svc.GetMovie err: Error 1054: Unknown column 'actor.' in 'where clause'","time":1640504523761213400}
+2021/12/26 15:46:37 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"svc.GetMovie err: Error 1054: Unknown column 'actor.' in 'where clause'","time":1640504797954685000}
+2021/12/26 15:47:13 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"svc.GetMovie err: Error 1054: Unknown column 'actor.' in 'where clause'","time":1640504833270482700}
+2021/12/26 15:47:46 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"svc.GetMovie err: Error 1054: Unknown column 'actor.id' in 'where clause'","time":1640504866978369700}
+2021/12/27 15:43:10 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"app.BindAndValid errs: City为必填字段","time":1640590990533006700}
+2021/12/27 15:51:27 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"svc.GetMovie err: record not found","time":1640591487848611600}
+2021/12/27 15:52:43 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"svc.GetMovie err: record not found","time":1640591563456747800}
+2022/01/04 17:25:17 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"app.BindAndValid errs: City为必填字段","time":1641288317896981400}
+2022/01/08 16:31:08 {"callers":["E:/go/src/movie/main.go: 22 main.init.0"],"level":"error","message":"app.BindAndValid errs: City为必填字段","time":1641630668763578700}

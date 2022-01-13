@@ -1,0 +1,28 @@
+Server:
+  RunMode: debug
+  HttpPort: 8000
+  ReadTimeout: 60
+  WriteTimeout: 60
+App:
+  DefaultPageSize: 0
+  MaxPageSize: 100
+  LogSavePath: storage/logs
+  LogFileName: app
+  LogFileExt: .log
+  DefaultContextTimeout: 60 * 1000 * 1000 * 1000
+Database:
+  DBType: mysql
+  Username: root  # 填写你的数据库账号
+  Password: 123456  # 填写你的数据库密码
+  Host: 127.0.0.1:3306
+  DBName: movie
+  TablePrefix:
+  Charset: utf8mb4
+  ParseTime: True
+  MaxIdleConns: 10
+  MaxOpenConns: 30
+Redis:
+  Network: tcp
+  Server: 127.0.0.1:6379
+  Password:
+  DB: 0
