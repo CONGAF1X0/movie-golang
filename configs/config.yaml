@@ -10,6 +10,13 @@ App:
   LogFileName: app
   LogFileExt: .log
   DefaultContextTimeout: 60 * 1000 * 1000 * 1000
+  UploadSavePath: storage/uploads
+  UploadServerUrl: http://127.0.0.1:8000/static
+  UploadImageMaxSize: 5  # MB
+  UploadImageAllowExts:
+      - .jpg
+      - .jpeg
+      - .png
 Database:
   DBType: mysql
   Username: root  # 填写你的数据库账号
@@ -26,3 +33,9 @@ Redis:
   Server: 127.0.0.1:6379
   Password:
   DB: 0
+JWT:
+  AccessSecret: MPL2Vv!6qin1ZI&E
+  RefreshSecret: Q(Y$A43T9q&)ERLrc
+  Issuer: CONGA1FX0
+  AtExpires: 900
+  RtExpires: 604800

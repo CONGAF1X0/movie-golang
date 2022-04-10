@@ -10,14 +10,15 @@ import (
 /**
 雪花算法
 	 40bit timestamp | 4bit typeID | 8bit machineID | 11bit sequenceBits
+	39bit timestamp | 2bit typeID | 11bit sequenceBits    52
 */
 
 const (
-	timestampBits = 40
-	machineIDBits = 8
+	timestampBits = 39
+	machineIDBits = 0
 	sequenceBits  = 11
 	maxSequence   = 1<<sequenceBits - 1
-	timeLeft      = 23
+	timeLeft      = 13
 )
 
 type Snowflake struct {
@@ -36,13 +37,9 @@ func init() {
 
 func NewSnowflake() *Snowflake {
 	st := time.Date(2019, 2, 21, 0, 0, 0, 0, time.Local).UnixNano() / 1e6
-	mID, err := lower8BitPrivateIP()
-	if err != nil {
-		panic(err)
-	}
 	return &Snowflake{
 		StartTime: st,
-		MachineID: mID,
+		MachineID: 0,
 		LastStamp: 0,
 		Sequence:  0,
 		mutex:     new(sync.Mutex),
@@ -53,7 +50,7 @@ func (sf *Snowflake) getMilliSeconds() int64 {
 	return time.Now().UnixNano() / 1e6
 }
 
-// NextID userID:0, movieID:1
+// NextID userID:0, ticketID:1,cinemaID:2
 func (sf *Snowflake) NextID(typeID int) (uint64, error) {
 	sf.mutex.Lock()
 	defer sf.mutex.Unlock()
@@ -62,8 +59,8 @@ func (sf *Snowflake) NextID(typeID int) (uint64, error) {
 }
 
 func (sf *Snowflake) nextID(typeID int) (uint64, error) {
-	if typeID > 15 {
-		return 0,errors.New("typeID > 15")
+	if typeID > 3 {
+		return 0, errors.New("typeID > 3")
 	}
 	timeStamp := sf.getMilliSeconds()
 	if timeStamp < sf.LastStamp {
@@ -82,11 +79,11 @@ func (sf *Snowflake) nextID(typeID int) (uint64, error) {
 	sf.LastStamp = timeStamp
 
 	id := ((timeStamp - sf.StartTime) << timeLeft) |
-		int64(typeID) << (sequenceBits + machineIDBits)	|
+		int64(typeID)<<(sequenceBits+machineIDBits) |
 		int64(sf.MachineID)<<sequenceBits |
 		sf.Sequence
 
-	return uint64(id), nil
+	return uint64(id<<12) >> 12, nil
 }
 
 func lower8BitPrivateIP() (uint8, error) {
@@ -94,7 +91,6 @@ func lower8BitPrivateIP() (uint8, error) {
 	if err != nil {
 		return 0, err
 	}
-
 	return ip[3], nil
 }
 func privateIPv4() (net.IP, error) {

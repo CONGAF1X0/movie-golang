@@ -11,7 +11,7 @@ import (
 type Captcha struct {
 }
 
-func NewCaptcha() Captcha{
+func NewCaptcha() Captcha {
 	return Captcha{}
 }
 
@@ -26,8 +26,12 @@ func (cap Captcha) CreateMobileCaptcha(c *gin.Context) {
 	}
 	svc := service.New(c.Request.Context())
 	err := svc.CreateMobileCaptcha(&param)
-	if err == errcode.NotSignup{
+	if err == errcode.NotSignup {
 		response.ToErrorResponse(errcode.NotSignup)
+		return
+	}
+	if err == errcode.IsSignup {
+		response.ToErrorResponse(errcode.IsSignup)
 		return
 	}
 	if err != nil {

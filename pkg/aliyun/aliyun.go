@@ -57,29 +57,29 @@ func _main(mobile, code string) (_result *dysmsapi20170525.SendSmsResponse, _err
 func SendMobileCaptcha(mobile string) error {
 	captcha := code()
 	resp, err := _main(mobile, captcha)
-	if *resp.Body.Code!="OK"{
+	if *resp.Body.Code != "OK" {
 		return errors.New(*resp.Body.Message)
 	}
 	if err != nil {
 		return err
 	}
-	err = cache.Store.Set(mobile,captcha,300)
+	err = cache.Store.Set(mobile, captcha, 300)
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func CheckMobileCaptcha(mobile,captcha string) (bool,error){
-	val,flag := cache.Store.Get(mobile)
-	if !flag{
-		return flag,errors.New("验证码失效")
-	} else if val.(string)!=captcha {
-		return flag,errors.New("验证码错误")
+func CheckMobileCaptcha(mobile, captcha string) (bool, error) {
+	val, flag := cache.Store.Get(mobile)
+	if !flag {
+		return flag, errors.New("验证码失效")
+	} else if val.(string) != captcha {
+		return flag, errors.New("验证码错误")
 	}
-	return flag,nil
+	cache.Store.Delete(mobile)
+	return flag, nil
 }
-
 
 func code() string {
 	rand.Seed(time.Now().UnixNano())

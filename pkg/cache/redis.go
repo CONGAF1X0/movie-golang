@@ -86,7 +86,7 @@ func deserializer(value []byte) (interface{}, error) {
 }
 
 // Set 存储值
-func (store *RedisStore) Set(key string, value interface{}, ttl int) error {
+func (store *RedisStore) Set(key string, value interface{}, ttl int64) error {
 	rc := store.pool.Get()
 	defer rc.Close()
 
@@ -192,9 +192,22 @@ func (store *RedisStore) Sets(values map[string]interface{}, prefix string) erro
 	return nil
 
 }
+func (store *RedisStore) Delete(key string) (int64, error) {
+	rc := store.pool.Get()
+	defer rc.Close()
+	if rc.Err() != nil {
+		return 0, rc.Err()
+	}
+
+	reply, err := rc.Do("DEL", key)
+	if err != nil {
+		return 0, err
+	}
+	return reply.(int64), nil
+}
 
 // Delete 批量删除给定的键
-func (store *RedisStore) Delete(keys []string, prefix string) error {
+func (store *RedisStore) DeleteArr(keys []string, prefix string) error {
 	rc := store.pool.Get()
 	defer rc.Close()
 	if rc.Err() != nil {

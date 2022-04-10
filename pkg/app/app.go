@@ -11,9 +11,9 @@ type Response struct {
 }
 
 type Pager struct {
-	Page int `json:"page"`
+	Page     int `json:"page"`
 	PageSize int `json:"page_size"`
-	TotalRows int `json:"total_rows"`
+	Total    int `json:"total"`
 }
 
 func NewResponse(ctx *gin.Context) *Response {
@@ -27,14 +27,14 @@ func (r *Response) ToResponse(data interface{}) {
 	r.Ctx.JSON(http.StatusOK, data)
 }
 
-func (r *Response) ToResponseList(list interface{}, totalRows int) {
+func (r *Response) ToResponseList(list interface{}, total int) {
 	r.Ctx.JSON(http.StatusOK, gin.H{
-		"code":errcode.Success.Code(),
+		"code": errcode.Success.Code(),
 		"list": list,
 		"pager": Pager{
-			Page:      GetPage(r.Ctx),
-			PageSize:  GetPageSize(r.Ctx),
-			TotalRows: totalRows,
+			Page:     GetPage(r.Ctx),
+			PageSize: GetPageSize(r.Ctx),
+			Total:    total,
 		},
 	})
 }

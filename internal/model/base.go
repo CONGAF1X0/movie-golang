@@ -14,6 +14,7 @@ type UserBase struct {
 	Mobile   string `json:"mobile"`
 	Email    string `json:"email"`
 	Face     string `json:"face"`
+	CinemaID uint64 `json:"cinema_id"`
 }
 
 func (u UserBase) IsExist(db *gorm.DB) (count int, err error) {
@@ -30,26 +31,26 @@ func (u UserBase) Create(db *gorm.DB) error {
 
 func (u UserBase) GetByMobile(db *gorm.DB) (UserBase, error) {
 	var base UserBase
-	err := db.Where("mobile=?",u.Mobile).Take(&base).Error
-	if err!=nil {
-		return base,err
+	err := db.Where("mobile=?", u.Mobile).Take(&base).Error
+	if err != nil {
+		return base, err
 	}
-	return base,nil
+	return base, nil
 }
 
 func (u UserBase) Get(db *gorm.DB) (UserBase, error) {
 	var base UserBase
-	err := db.Where("uid = ?",u.UID).Or("mobile=?",u.Mobile).Or("user_name = ?",u.UserName).Or("email=?",u.Email).Take(&base).Error
+	err := db.Where(&u).Take(&base).Error
 	if err != nil {
-		return base,err
+		return base, err
 	}
-	return base,nil
+	return base, nil
 }
 
 func (u UserBase) Update(db *gorm.DB) error {
-	return db.Model(&UserBase{}).Where("uid = ?",u.UID).Update(u).Error
+	return db.Model(&UserBase{}).Where("uid = ?", u.UID).Update(u).Error
 }
 
 func (u UserBase) Delete(db *gorm.DB) error {
-	return db.Where("uid = ?",u.UID).Delete(&u).Error
+	return db.Where("uid = ?", u.UID).Delete(&u).Error
 }

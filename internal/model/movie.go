@@ -14,9 +14,10 @@ type Movie struct {
 	Genre     string `json:"genre"`
 	Storyline string `json:"storyline"`
 	Runtime   string `json:"runtime"`
-	Release   int    `json:"release"`
+	Release   int64  `json:"release"`
 	Rating    string `json:"rating"`
 	BoxOffice string `json:"box_office"`
+	Cover     string `json:"cover"`
 }
 
 type MovieSimple struct {
@@ -24,10 +25,11 @@ type MovieSimple struct {
 	MovieName string `json:"movie_name"`
 	Director  string `json:"director"`
 	StarsIds  string `json:"stars_ids"`
-	Starts    string `json:"starts"`
+	Stars     string `json:"stars"`
 	Runtime   string `json:"runtime"`
 	Genre     string `json:"genre"`
 	Rating    string `json:"rating"`
+	Cover     string `json:"cover"`
 }
 
 func (m Movie) TableName() string {
@@ -54,6 +56,14 @@ func (m Movie) Get(db *gorm.DB) (MovieApi, error) {
 	return movie, nil
 }
 
+func (m Movie) GetRuntime(db *gorm.DB) (string, error) {
+	var movie Movie
+	if err := db.Raw("select runtime from movie where movie_id = ?", m.MovieID).First(&movie).Error; err != nil {
+		return "", err
+	}
+	return movie.Runtime, nil
+}
+
 func (m Movie) GetSimple(db *gorm.DB) (MovieSimple, error) {
 	var movie MovieSimple
 	var err error
@@ -61,9 +71,11 @@ func (m Movie) GetSimple(db *gorm.DB) (MovieSimple, error) {
 		return movie, err
 	}
 	ids := convert.Str2IntSlice(strings.Split(movie.StarsIds, ","))
-	movie.Starts,err = Actor{}.StrList(db,ids)
-	if err != nil {
-		return movie,err
+	if ids[0] != 0 {
+		movie.Stars, err = Actor{}.StrList(db, ids)
+		if err != nil {
+			return movie, err
+		}
 	}
 	return movie, nil
 }

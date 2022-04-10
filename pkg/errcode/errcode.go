@@ -6,8 +6,8 @@ import (
 )
 
 type Error struct {
-	code int `json:"code"`
-	msg string `json:"msg"`
+	code    int      `json:"code"`
+	msg     string   `json:"msg"`
 	details []string `json:"details"`
 }
 
@@ -53,6 +53,12 @@ func (e *Error) WithDetails(details ...string) *Error {
 
 func (e *Error) StatusCode() int {
 	switch e.Code() {
+	case NotSignup.Code():
+		fallthrough
+	case IsSignup.Code():
+		fallthrough
+	case Sold.Code():
+		fallthrough
 	case Success.Code():
 		return http.StatusOK
 	case ServerError.Code():
@@ -69,6 +75,10 @@ func (e *Error) StatusCode() int {
 		return http.StatusUnauthorized
 	case TooManyRequests.Code():
 		return http.StatusTooManyRequests
+	case Forbidden.Code():
+		return http.StatusForbidden
+	case NotFound.Code():
+		return http.StatusNotFound
 	}
 
 	return http.StatusInternalServerError

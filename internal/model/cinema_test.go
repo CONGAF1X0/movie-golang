@@ -6,7 +6,6 @@ import (
 	"testing"
 )
 
-
 func TestCinema_HotMovieList1(t *testing.T) {
 	//fmt.Println(time.Date(2022,1,1,10,00,0,0,time.Local).Local().Unix())
 	type fields struct {
@@ -90,7 +89,7 @@ func TestCinema_CinemaSessList(t *testing.T) {
 		{
 			name:    "1",
 			fields:  fields{City: "广州"},
-			args:    args{db: NewDB(),session: Session{MovieID: 1,StartTime: 1640933321}},
+			args:    args{db: NewDB(), session: Session{MovieID: 1, StartTime: 1640933321}},
 			want:    nil,
 			wantErr: false,
 		},
@@ -100,7 +99,7 @@ func TestCinema_CinemaSessList(t *testing.T) {
 			c := Cinema{
 				CinemaID:   tt.fields.CinemaID,
 				CinemaName: tt.fields.CinemaName,
-				province:   tt.fields.province,
+				Province:   tt.fields.province,
 				City:       tt.fields.City,
 				District:   tt.fields.District,
 				Location:   tt.fields.Location,

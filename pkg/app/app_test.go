@@ -11,6 +11,7 @@ import (
 )
 
 var wg sync.WaitGroup
+
 /*
 350534107421253632
 350534107421253633
@@ -27,7 +28,7 @@ var wg sync.WaitGroup
 */
 func TestGenSnowFlake(t *testing.T) {
 	//fmt.Println(time.Date(2019, 4, 21, 0, 0, 0, 0, time.UTC).UTC().UnixNano()/1e6)
-	ch := make(chan uint64,10000)
+	ch := make(chan uint64, 10000)
 	count := 10000
 	wg.Add(count)
 	defer close(ch)
@@ -35,23 +36,23 @@ func TestGenSnowFlake(t *testing.T) {
 	f := uid.NewSnowflake()
 	//f := sonyflake.NewSonyflake(sonyflake.Settings{})
 
-	for i:=0 ; i < count ; i++ {
+	for i := 0; i < count; i++ {
 		go func() {
 			defer wg.Done()
 			rand.Seed(time.Now().UnixNano())
-			t := uint8(rand.Intn(16))
-			id,_ := f.NextID(t)
+			t := rand.Intn(4)
+			id, _ := f.NextID(t)
 			ch <- id
 		}()
 	}
 	wg.Wait()
 	m := make(map[uint64]int)
-	for i := 0; i < count; i++  {
-		id := <- ch
+	for i := 0; i < count; i++ {
+		id := <-ch
 		// 如果 map 中存在为 id 的 key, 说明生成的 snowflake ID 有重复
 		_, ok := m[id]
 		if ok {
-			fmt.Printf("repeat id %d\n",id)
+			fmt.Printf("repeat id %d\n", id)
 
 		}
 		// 将 id 作为 key 存入 map
@@ -63,11 +64,11 @@ func TestGenSnowFlake(t *testing.T) {
 }
 
 func Test(t *testing.T) {
-	f:= uid.NewSnowflake()
-	id,_:=f.NextID(1)
-	fmt.Printf("%b\n%v\n",id,id)
+	f := uid.NewSnowflake()
+	id, _ := f.NextID(1)
+	fmt.Printf("%b\n%v\n", id, id)
 }
 
-func TestM(t *testing.T){
+func TestM(t *testing.T) {
 	aliyun.SendMobileCaptcha("18665726192")
 }

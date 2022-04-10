@@ -10,11 +10,15 @@ type ServerSettingS struct {
 }
 
 type AppSettingS struct {
-	DefaultPageSize int
-	MaxPageSize     int
-	LogSavePath     string
-	LogFileName     string
-	LogFileExt      string
+	DefaultPageSize      int
+	MaxPageSize          int
+	LogSavePath          string
+	LogFileName          string
+	LogFileExt           string
+	UploadSavePath       string
+	UploadServerUrl      string
+	UploadImageMaxSize   int
+	UploadImageAllowExts []string
 }
 
 type DatabaseSettingS struct {
@@ -35,6 +39,14 @@ type RedisSettingS struct {
 	Server   string
 	Password string
 	DB       string
+}
+
+type JWTSettingS struct {
+	AccessSecret  string
+	RefreshSecret string
+	AtExpires     int64
+	RtExpires     int64
+	Issuer        string
 }
 
 func (s *Setting) ReadSection(k string, v interface{}) error {
