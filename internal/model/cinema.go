@@ -109,7 +109,7 @@ func (c Cinema) CinemaSessList(db *gorm.DB, session Session, pageOffset, pageSiz
 			"movie_id= ? AND city= ? AND start_time > ? AND (cinema_name like ? or location like ?)", c.Longitude, c.Latitude,
 			session.MovieID, c.City, session.StartTime, query, query).Group("c.cinema_id").Scan(&cin).Error
 	} else {
-		if time.Now().Day() == time.Unix(session.StartTime/1000, 0).Day() {
+		if time.Now().UTC().Day() == time.Unix(session.StartTime/1000, 0).Day() {
 			err = db.Raw("select *,st_distance_sphere(point(longitude,latitude),point(?,?)) as distance from `session` as s,cinema as c WHERE s.cinema_id=c.cinema_id AND "+
 				"movie_id= ? AND city= ? AND to_days(FROM_UNIXTIME(start_time/1000)) = to_days(FROM_UNIXTIME(?)) AND start_time > ?", c.Longitude, c.Latitude,
 				session.MovieID, c.City, session.StartTime/1000, session.StartTime).Group("c.cinema_id").Scan(&cin).Error

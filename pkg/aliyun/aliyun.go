@@ -34,7 +34,7 @@ func createClient(accessKeyId *string, accessKeySecret *string) (_result *dysmsa
 
 func _main(mobile, code string) (_result *dysmsapi20170525.SendSmsResponse, _err error) {
 	var client *dysmsapi20170525.Client
-	client, _err = createClient(tea.String("LTAI5tAWvtXnkFdYwtStaBB6"), tea.String("WiLzzZJLurD6FYsDoZ89zSry0RPTqJ"))
+	client, _err = createClient(tea.String("key"), tea.String("secret"))
 	if _err != nil {
 		return
 	}
@@ -57,12 +57,13 @@ func _main(mobile, code string) (_result *dysmsapi20170525.SendSmsResponse, _err
 func SendMobileCaptcha(mobile string) error {
 	captcha := code()
 	resp, err := _main(mobile, captcha)
-	if *resp.Body.Code != "OK" {
-		return errors.New(*resp.Body.Message)
-	}
 	if err != nil {
 		return err
 	}
+	if *resp.Body.Code != "OK" {
+		return errors.New(*resp.Body.Message)
+	}
+
 	err = cache.Store.Set(mobile, captcha, 300)
 	if err != nil {
 		return err

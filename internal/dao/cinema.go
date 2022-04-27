@@ -14,6 +14,7 @@ func (d *Dao) Cinema(id uint64) (model.Cinema, error) {
 }
 
 func (d *Dao) CinemaSessList(city, dis, query string, lat, lng float64, mid int, t int64, offset, size int) ([]model.CinemaSess, int, error) {
+
 	return model.Cinema{City: city, District: dis, CinemaName: query, Latitude: lat, Longitude: lng}.CinemaSessList(d.engine, model.Session{MovieID: mid, StartTime: t}, offset, size)
 }
 

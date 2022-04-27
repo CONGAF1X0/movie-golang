@@ -1,5 +1,5 @@
 Server:
-  RunMode: debug
+  RunMode:  debug #release
   HttpPort: 8000
   ReadTimeout: 60
   WriteTimeout: 60
@@ -21,7 +21,7 @@ Database:
   DBType: mysql
   Username: root  # 填写你的数据库账号
   Password: 123456  # 填写你的数据库密码
-  Host: 127.0.0.1:3306
+  Host: localhost:3306
   DBName: movie
   TablePrefix:
   Charset: utf8mb4
@@ -30,7 +30,7 @@ Database:
   MaxOpenConns: 30
 Redis:
   Network: tcp
-  Server: 127.0.0.1:6379
+  Server: localhost:6379
   Password:
   DB: 0
 JWT:
